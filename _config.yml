@@ -29,5 +29,5 @@ defaults:
 
 # Glynn Set Up
 ftp_host: 'ftp.ivanpik.co.uk'
-ftp_dir: '/subdomains/new/'
+ftp_dir: '/public_html/'
 ftp_passive: false
