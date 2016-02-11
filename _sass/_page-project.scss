@@ -119,7 +119,7 @@
   @include media-query(min,$bp-small) {
     @include flexbox;
     @include justify-content(space-between);
-    max-width: 1160px;
+    max-width: 1190px;
     margin: 0 auto 4rem;
 
     @include media-query(max,$bp-small) {
