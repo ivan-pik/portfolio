@@ -1,0 +1,22 @@
+//---------------------------------------------------------
+// CSS RESET
+
+html, body, div, span, h1, h2, h3, p, dl, dt, dd, ul, li, article, footer, header, nav, section, figure
+{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    background: transparent;
+    vertical-align: baseline;
+    font-size: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  outline: 0;
+}

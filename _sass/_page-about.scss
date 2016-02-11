@@ -1,0 +1,165 @@
+// -----------------------------------------------------------------
+// About Page
+// -----------------------------------------------------------------
+
+
+.about__wrapper {
+  @extend %main-wrapper;
+}
+
+
+
+// Section
+
+.about__section {
+  margin: 0 0 6.2rem 0;
+
+  @include media-query(max,$bp-small) {
+    margin: 0 0 4rem 0;
+  }
+  
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  p {
+    @extend %body-paragraph;
+  }
+
+  a {
+    padding-bottom: 0.5em;
+  }
+}
+
+
+.about__section-title {
+  @extend %font-size--h1;
+  margin: 0.15em 0 0.5em;
+}
+
+
+
+.about__disciplines {
+  @extend %font-size--small;
+  @include media-query(max,380px) {
+    font-size: 12px;
+  }
+  margin: 0 0 1.2rem 0;
+}
+
+.about__disciplines-item {
+  display: inline-block;
+  border: 1px solid $color-font--body;
+  padding: 0.3rem 0.7rem 0.4rem;
+  margin: 0 0.4rem 1.1rem 0;
+  @include media-query(max,$bp-small) {
+    padding: 0.2em 0.3em 0.25em;
+    margin: 0 0 0.25rem 0;
+  }
+}
+
+.about_discipline-summary {
+  @extend %separate;
+
+  @include media-query(max,$bp-small) {
+    margin: 1rem 0 0 0;
+  }
+
+  h3 {
+    @extend %font-size--x-small;
+    @extend %highlight;
+    margin: 0 0 0.7em 0;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+
+// Positions
+
+.about__position-header{
+  @include flexbox();
+  @include align-items(stretch);
+  margin-bottom: 1.3rem;
+}
+
+.about__position-company {
+  @extend %font-size--body;
+  @extend %highlight;
+}
+
+.about__position-date {
+   @extend %font-size--x-small;
+   @include flexbox();
+   @include align-items(center);
+   padding: 0 1.6em;
+   border: 1px solid $color-background--highlight;
+   border-left: none;
+}
+
+p.about__position-company-description {
+  margin-bottom: 0.5rem;
+}
+
+.about__posititon-company-details {
+  @extend %font-size--x-small;
+  @extend %separate;
+  a {
+    display: inline-block;
+    padding-bottom: 0.5em;
+  }
+}
+
+
+.about__position-details:not(:last-child) {
+  margin-bottom: 3rem;
+}
+
+
+
+
+
+// Links
+
+.about__links {
+  .icon {
+    @extend %icon;
+    fill: currentColor;
+  }
+}
+
+.about__link {
+  display: inline-block;
+  margin-right: 2rem;
+  a {
+    padding-bottom: 0.5em;
+  }
+  .note {
+    color: $color-font--note;
+  }
+}
+
+
+
+
+// Contact
+
+.about-contact__link {
+  font-weight: 700;
+}
+
+.about-contact__title {
+  @extend %font-size--h1;
+  margin-bottom: 3.7rem;
+}
+
+.about-contact__caption {
+  @extend %font-size--x-small;
+  margin: 3.4em 0 0.2em 0;
+}
+
+.about-contact__link {
+  box-shadow: inset 0px -3px 0px 0px $color-font--link;
+}

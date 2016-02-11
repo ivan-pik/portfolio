@@ -1,0 +1,586 @@
+// -----------------------------------------------------------------
+// Partials
+// -----------------------------------------------------------------
+
+%main-wrapper {
+  max-width: 860px;
+  padding: 0 6.5vw;
+  margin-left: auto;
+  margin-right: auto;
+  @include media-query(min,$bp-full-width) {
+    padding: 0;
+  }
+}
+
+// Icons
+%icon {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -0.05em;
+  width: 1em;
+  height: 1em;
+  font-size: 1.3335rem; // 32 px - depends on body font size
+  margin-right: 0.3rem;
+}
+
+// Horizontal narrow line
+%separate {
+  &:after {
+    content: "";
+    display: block;
+    background-color: $color-background--highlight;
+    height: 0.2em;
+    width: 3rem;
+    margin: 0.6rem 0 1.6rem 0;
+    @include media-query(min,$bp-small) {
+      margin: 1rem 0 2rem 0;
+    }
+  }
+}
+
+// Arrow Icon
+@mixin cssArrow() {
+  $arrow-color: $color-font--link;
+  $arrow-color-hover: $color-font--link-hover;
+  $arrow-size: 20px;
+  $arrow-border: 2px;
+
+  &:after, &:before {
+    @include transition(opacity 0.15s ease-in-out);
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+
+  // '>' Part
+  &:before {
+    top: 50%;
+    width: $arrow-size;
+    height: $arrow-size;
+    transform-origin: 50% 50%;
+    @include transform(translate(-0.15em, -($arrow-size / 2)) rotate(45deg));
+    box-shadow: inset -#{$arrow-border} $arrow-border 0 0 $arrow-color;
+    @include media-query(max,$bp-small) {
+      @include transform( translate(0, -($arrow-size / 2)) rotate(45deg) scale(0.5));
+    }
+  }
+  // '-' Part
+  &:after {
+    top: 50%;
+    width: $arrow-size * 1.3;
+    height: $arrow-border;
+    @include transform(translate(-0.1em, -($arrow-border / 2)));
+    background-color: $arrow-color;
+    @include media-query(max,$bp-small) {
+      display: none;
+    }
+  }
+
+  &:hover {
+    &:before {
+      box-shadow: inset -#{$arrow-border} $arrow-border 0 0 $arrow-color-hover;
+    }
+    &:after {
+      background-color: $arrow-color-hover;
+    }
+  }
+}
+
+// Background Heading
+%highlight {
+  display: inline-block;
+  color: $color-font--highlight;
+  background-color: $color-background--highlight;
+  padding: 0.3em 0.6em 0.35em;
+  @include media-query(min,$bp-small) {
+    padding: 0.2em 0.6em 0.25em;
+  }
+}
+
+// '/' or '-' (Roles, etc.)
+.separator {
+  margin: 0 0.2em;
+  color: $color-font--note;
+}
+
+// Go Up Bar
+.go-up {
+  @include transition(all 0.2s ease-in-out);
+  position: fixed;
+  right: 0;
+  top: -40px;
+  display: block;
+  width: 100vw;
+  height: 40px;
+  cursor: pointer;
+  background-color: fade-out($color-background--page, 0.2);
+  box-shadow: inset 0px -1px 0px 0px rgba(0,0,0,0.08);
+
+  @include media-query(min,$bp-small) {
+    height: 20px;
+  }
+
+  body:not(.touch) &:hover {
+    height: 40px;
+    background-color: $color-background--page;
+  }
+
+  .show-go-up & {
+    top: 0px;
+  }
+
+  &:after {
+    @include transition(transform 0.2s ease-in-out);
+    display: block;
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    transform-origin: 50% 50%;
+    @include transform(translate(-5px, -2px) rotate(45deg));
+    box-shadow: inset 2px 2px 0 0 $color-font--link;
+  }
+}
+
+
+// -----------------------------------------------------------------
+// Typography
+// -----------------------------------------------------------------
+// Avoid FOUT
+.wf-loading {
+  h1, h2, h3, figcaption, p, a, dl, ul {
+    visibility: hidden;
+  }
+}
+.wf-active {
+  h1, h2, h3, figcaption, p, a, dl, ul {
+    visibility: visible;
+  }
+}
+
+*::selection {background: #FCE40D; color: #000;}
+*::-moz-selection {background: #FCE40D; color: #000;}
+
+
+html {
+  @extend %font-size--body;
+}
+
+body {
+  @extend %font-family--body;
+  color: $color-font--body;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern";
+  -webkit-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern";
+  -moz-font-feature-settings: "kern=1";
+}
+
+h1,h2,h3 {
+  @extend %font-family--headings;
+}
+
+strong {
+  font-weight: 700;
+}
+
+a {
+  padding-bottom: 0.5em;
+  color: $color-font--link;
+}
+
+body:not(.touch) {
+  a {
+    @include transition(box-shadow 0.15s ease-in-out);
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    &:hover {
+      box-shadow: inset 0px -0.3rem 0px 0px $color-font--link-hover;
+      &, * {
+      color: $color-font--link-hover;
+      }
+    }
+  }
+}
+
+.thin-space {
+  margin: 0 0.07em;
+}
+
+%body-paragraph {
+  margin-bottom: 1.4rem;
+  @include media-query(min,$bp-small) {
+    margin-bottom: 1.6rem;
+  }
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+
+%font-family--body {
+  font-family: $font-family-body;
+  font-weight: 300;
+}
+
+%font-family--headings {
+  font-family: $font-family-headings;
+  font-weight: 700;
+}
+
+// Vertical spacing is relative to this font-size
+
+%font-size--body {
+  @include fluidSize(16px,24px);
+  line-height: 1.4;
+  @include media-query(min,$bp-full-width) {
+    line-height: 1.6;
+  }
+}
+
+
+
+%font-size--h1 {
+  @include fluidSize(21px,63px);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  @include media-query(min,$bp-small) {
+    line-height: 1.2;
+  }
+}
+
+%font-size--h2 {
+  @include fluidSize(18px,40px);
+  line-height: 1.3;
+}
+
+%font-size--small {
+  @include fluidSize(14px,20px);
+  line-height: 1.6;
+  @include media-query(max,$bp-small) {
+    line-height: 1.4;
+  }
+}
+
+%font-size--x-small {
+  @include fluidSize(11px,16px);
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  @include media-query(max,$bp-small) {
+    line-height: 1.4;
+  }
+}
+
+
+
+// -----------------------------------------------------------------
+// Main Layout
+// -----------------------------------------------------------------
+
+body {
+  background-color: $color-background--page;
+  padding-bottom: 7rem;
+  @include media-query(max,$bp-small) {
+    padding-bottom: 3rem;
+  }
+}
+
+
+// -----------------------------------------------------------------
+// Site Header
+// -----------------------------------------------------------------
+
+.site-header {
+  @include media-query(max,$bp-small) {
+    padding: 0 0 2.6rem 0;
+  }
+}
+
+
+.site-header__wrapper {
+  @extend %main-wrapper;
+  @include media-query(min,$bp-small) {
+    @include flexbox();
+    @include flex-direction(column);
+    @include align-items(flex-start);
+    @include justify-content(center);
+    min-height: 25rem;
+    height: 100vh;
+    max-height: 70vh;
+  }
+  @include media-query(max,400px) {
+      padding-right: 0;
+  }
+}
+
+.site-header__name {
+  @extend %font-size--h2;
+  @include flex(1 0 auto);
+  margin: 1.2em 0 0 0;
+  @include media-query(max,$bp-small) {
+    margin: 1.5em 0 2em 0;
+  }
+}
+
+.site-header__occupation {
+  @include fluidSize(21px,80px);
+  line-height: 1.4;
+  letter-spacing: -0.015em;
+  margin-bottom: 1rem;
+  opacity: 0;
+  @include transition(opacity 0.25s 0.2s ease-in-out, transform 0.25s 0.2s ease-in-out);
+  @include transform(translate(0, 0.3em));
+
+  .wf-active & {
+    opacity: 1;
+     @include transform(translate(0, 0));
+  }
+}
+
+.site-header__occupation-amp {
+  color: $color-font--note;
+  display: inline-block;
+  opacity: 0;
+  @include transform(translate(0, -0.4em));
+  @include transition(opacity 0.25s 0.45s ease-in-out, transform 0.25s 0.45s cubic-bezier(0.49, 0.05, 0, 1.34));
+
+  box-shadow: 0px 0px 0 0.8em $color-background--page, 0px 0px 0 0.9em $color--border;
+  width: 1.4em;
+  height: 1.4em;
+  border-radius: 1.4em;
+  text-align: center;
+  margin: 0 0 0 -0.4em;
+  z-index: -3;
+  position: relative;
+  background: $color-background--page;
+
+
+  .wf-active & {
+    opacity: 1;
+     @include transform(translate(0, 0));
+  }
+}
+
+
+// Navigation
+
+.navigation {
+  margin-bottom: 3.2rem;
+  @include flex(1 0 auto);
+  @include media-query(min,$bp-small) {
+    margin-bottom: 2.2rem;
+  }
+}
+
+.navigation__list {
+  @include flexbox;
+}
+
+.navigation__link {
+  @extend %font-size--body;
+  font-weight: 700;
+  display: inline-block;
+  padding: 0 0 0.5em 0;
+  font-family: $font-family-headings;
+  box-shadow: inset 0px -3px 0px 0px $color-font--link;
+}
+
+.navigation__item--contact {
+  margin-right: 1em;
+}
+
+
+// -----------------------------------------------------------------
+// Projects List
+// -----------------------------------------------------------------
+
+.projects {
+  @extend %main-wrapper;
+}
+
+.projects__title {
+  @extend %font-size--x-small;
+  margin: 1.4em 0 0 0;
+}
+
+.projects__item-link {
+  display: block;
+  padding: 2rem 33px 2.15rem 0;
+  position: relative;
+
+  @include media-query(max,$bp-small) {
+    padding: 1.2rem 33px 1.35rem 0;
+  }
+
+  @include cssArrow();
+
+
+  &.projects__item-link--displayed {
+    &:after, &:before {
+      display: none;
+    }
+  }
+}
+
+body:not(.touch) {
+  .projects__list:hover .projects__item-link {
+    &:after, &:before {
+      opacity: 0.2;
+    }
+    &:hover {
+      &:after, &:before {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+
+.projects__item {
+  box-shadow: inset 0px -1px 0px 0px $color--border;
+}
+
+.projects__item-link-displayed-note {
+  @extend %font-size--small;
+  display: block;
+  color: $color-font--note;
+  line-height: 1.2;
+  @include media-query(min,460px) {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 2em;
+    line-height: 2em;
+    margin-top: -1em;
+  }
+}
+
+
+.projects__item-title {
+  @extend %font-size--h2;
+  color: $color-font--body;
+  .projects__item-link--displayed & {
+    color: $color-font--note;
+  }
+}
+
+
+
+
+// External Links
+
+.external-links {
+  @extend %font-size--x-small;
+  margin: 1rem 0 0 0;
+  @include media-query(min,$bp-full-width) {
+    margin: 3.5rem 0 0 0;
+  }
+  @include media-query(max,$bp-full-width) {
+    padding: 1rem 0 0 0;
+  }
+
+  .icon {
+    @extend %icon;
+    fill: $color-font--body;
+  }
+}
+
+
+.external-links__item {
+  display: inline-block;
+  margin-right: 0.7rem;
+
+  @include media-query(min, $bp-small) {
+    margin-right: 2rem;
+  }
+}
+
+.external-links__link {
+  padding-bottom: 1.2em;
+  &:hover .icon {
+    fill: $color-font--link-hover;
+  }
+}
+
+
+// -----------------------------------------------------------------
+// AJAX LOADER
+// -----------------------------------------------------------------
+
+.ajax-loading-status {
+  @extend %font-size--x-small;
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: $color-background--page;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  z-index: 1000;
+
+
+  &:after {
+    box-sizing: border-box;
+    content: "";
+    display: block;
+    border: 5px dashed $color-font--body;
+    width: 8em;
+    height: 8em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -4em 0 0 -4em;
+    border-radius: 5em;
+    -webkit-animation-name: loader-transform-keyframes;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-delay: 0ms;
+    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: loader-transform-keyframes;
+    animation-duration: 4s;
+    animation-delay: 0ms;
+    animation-fill-mode: forwards;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform-origin: 0 0;
+    @include transform-origin(50% 50%);
+  }
+
+  .ajax-loading & {
+    display: block;
+  }
+}
+
+@-webkit-keyframes loader-transform-keyframes {
+  0% {-webkit-transform:rotateZ(0deg); transform:rotateZ(0deg);}
+  100% {-webkit-transform:rotateZ(360deg); transform:rotateZ(360deg);}
+}
+
+
+
+// -----------------------------------------------------------------
+// 404 Page
+// -----------------------------------------------------------------
+
+.error {
+  @extend %main-wrapper;
+  padding-top: 2rem;
+  h3 {
+    @extend %font-size--x-small;
+    @extend %highlight;
+  }
+  h2 {
+    @extend %font-size--h2;
+    @extend %separate;
+    margin: 0.2em 0;
+  }
+
+}

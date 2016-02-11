@@ -1,0 +1,21 @@
+<nav class="projects js-projects">
+
+	<h2 class="projects__title">My Work</h2>
+
+	<ul class="projects__list">
+
+		{% for project in site.pages %}
+      {% if project.url contains 'project/' %}
+    		<li class="projects__item">
+          <a href="{{ project.url }}" class="projects__item-link js-project-item-link" data-transition-to="project">
+      			<h3 class="projects__item-title">{{ project.title }}</h3>
+          </a>
+    		</li>
+      {% endif %}
+
+		{% endfor %}
+  </ul>
+
+  {% include external-links.html %}
+
+</nav>

@@ -1,0 +1,72 @@
+// -----------------------------------------------------------------
+// Content Transitions
+// -----------------------------------------------------------------
+
+
+
+// Avoid scrolling during the transitions
+.fade-out,
+.fade-in,
+.scrolling {
+  pointer-events: none;
+  overflow: hidden;
+  height: 100vh;
+}
+
+
+
+// Transition opacity
+.content__wrapper {
+  @include transition(opacity $fade-in-time ease-in-out, transform $fade-in-time ease-in-out);
+  @include transform(translate(0, -2rem));
+  opacity: 1;
+  .fade-out & {
+    opacity: 0;
+    @include transform(translate(0, 0));
+  }
+}
+
+
+// On History Transitions where history manual scroll is not enabled
+.hide-content {
+  .content__wrapper {
+    visibility: hidden;
+  }
+}
+
+// Navigation
+
+.navigation__item {
+  white-space: nowrap;
+  overflow: hidden;
+  @include transition(max-width $fade-in-time ease);
+  max-width: 9em;
+}
+
+.navigation__item--index {
+  .page-type--index &,
+  .page-type--project &,
+  .fade-out & {
+    max-width: 0;
+  }
+  .hide-content.fade-out--about & {
+    display: none;
+  }
+}
+
+.navigation__item--about {
+  .page-type--about &,
+  .fade-out & {
+    max-width: 0;
+  }
+  .hide-content.fade-out--index & {
+    display: none;
+  }
+}
+
+.fade-in--about .navigation__item--index,
+.fade-in--index .navigation__item--about,
+.navigation-no-transition .navigation__item--about {
+  max-width: 9em; }
+
+

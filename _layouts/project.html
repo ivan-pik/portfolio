@@ -1,0 +1,96 @@
+---
+layout: default
+---
+
+<main class="content content--project js-content" data-page-type="project">
+
+  <div class="content__wrapper">
+
+    <nav class="project-navigation project-navigation--top js-project-navigation--top">
+      <a href="/#projects" class="project-navigation__link project-navigation__link--other js-other-projects" data-list="top"><span class="dummy-icon"></span><span class="js-project-navigation-toggle-text">My Work</span></a>
+    </nav>
+
+
+
+    <article class="project">
+
+      <header class="project__intro">
+
+        <h1 class="project__name">{{ page.title }}</h1>
+
+        
+
+        <section class="project__client">
+          <h2 class="project__client-caption">Client</h2>
+          <p class="project__client-description">{{ page.client }}: {{ page.clientDescription }}</p>
+        </section>
+
+        <section class="project__role">
+          <h2 class="project__role-caption">Role</h2>
+          <p class="project__role-description">{{ page.role }}</p>
+        </section>
+      </header>
+
+
+
+      {{ content }}
+
+    </article>
+
+    <div class="project-navigation project-navigation--bottom">
+    {% for project in site.pages %}
+    {% if project.url == page.url %}
+      {% assign order = forloop.index | plus:'1' %}
+    {% endif %}
+    {% if forloop.index == order and project.url contains 'project' %}
+      <a href="{{ project.url }}" class="project-navigation__link project-navigation__link--next js-next-project" data-transition-to="project">Next  <span class="project-navigation__next-project-name">{{ project.title }}</span></a>
+      {% endif %}
+    {% endfor %}
+      <a href="/#projects" class="project-navigation__link project-navigation__link--other js-other-projects" data-list="bottom"><span class="dummy-icon"></span><span class="js-project-navigation-toggle-text">My Work</span></a>
+    </div>
+
+
+
+    {% include projects-list.html %}
+
+  </div>
+
+</main>
+
+
+
+
+<script>
+$(function() {
+
+  var disableAppScroll = false;
+
+  function scrollTo(ele,offset,speed) {
+    $('html, body').animate({
+      scrollTop: ele + offset
+    }, speed, 'swing');
+  }
+
+  setTimeout(function() {
+    if (disableAppScroll == false) {
+      $('body').addClass('scrolling');
+      scrollTo($(".js-content").offset().top, -40, 800);
+    }
+  }, 1200);
+
+  setTimeout(function() {
+    $('body').removeClass('scrolling');
+  }, 2000);
+
+
+  $(window).scroll(function(e) {
+   if (e.originalEvent) {
+      disableAppScroll = true;
+    }
+  });
+ $(document).on('click', '', function() {
+    disableAppScroll = true;
+    return true;
+  });
+});
+</script>

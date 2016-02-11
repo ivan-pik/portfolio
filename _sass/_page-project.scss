@@ -1,0 +1,419 @@
+// -----------------------------------------------------------------
+// Project
+// -----------------------------------------------------------------
+
+
+.project > header,
+.project > .project__long-description,
+.project__partial > header,
+.project__partial > section,
+.project__image-group-caption
+{
+  @extend %main-wrapper;
+}
+
+
+// Project Intro
+
+.project__intro {
+  margin: 0 0 1.7rem 0;
+
+  .project__role-caption, .project__client-caption {
+    min-width: 6em;
+  }
+
+  .project__role {
+    margin-bottom: 2rem;
+  }
+}
+
+.project__name {
+  @extend %font-size--h1;
+  // @extend %highlight;
+  margin: 6.9rem 0 6.8rem 0;
+  @include media-query(max,$bp-small) {
+    margin: 2.2rem 0 0.31em 0;
+  }
+}
+
+
+
+
+
+.project__client {
+  margin-bottom: 2rem;
+}
+
+
+
+.project__client-description {
+  margin-bottom: 0.7em;
+}
+
+.project__client-name {
+  margin-bottom: 0.5rem;
+}
+
+.project__role-caption, .project__client-caption {
+  @extend %font-size--x-small;
+  min-width: 4em;
+  color: $color-font--note;
+  margin-bottom: 0.5em;
+}
+
+
+
+.project__role-description, .project__client-description {
+  // @extend %font-size--small;  
+
+}
+
+.project__role-description {
+   @extend %font-size--x-small;  
+}
+
+.project__long-description {
+  margin-bottom: 5.8em;
+  @include media-query(max,$bp-small) {
+     margin-bottom: 3em;
+  }
+
+  p {
+    @extend %body-paragraph;
+  }
+}
+
+
+// Project Partial
+
+.project__partial {
+  margin-bottom: 6rem;
+}
+
+.project__partial-header {
+  margin-bottom: 3.6rem;
+  @include media-query(max,$bp-small) {
+     margin-bottom: 2em;
+  }
+}
+
+.project__partial-title {
+  @extend %font-size--h2;
+  margin-bottom: 0.9em;
+}
+
+.project__partial-description {
+  margin-bottom: 0.67rem;
+}
+
+// Image Group Caption
+
+.project__image-group-caption {
+   @extend %font-size--small;
+   margin-bottom: 2rem;
+}
+
+// Image Group
+
+.project__image-group {
+  @include media-query(min,$bp-small) {
+    @include flexbox;
+    @include justify-content(space-between);
+    max-width: 1160px;
+    margin: 0 auto 4rem;
+
+    @include media-query(max,$bp-small) {
+      margin: 0 auto 2rem;
+    }
+  }
+}
+
+
+// Project Image
+
+.project__image {
+
+  &.project__image--browser, &.project__image--noframe {
+    margin: 0 2vw 4rem;
+    @include media-query(max,$bp-small) {
+      margin: 0 2vw 2rem;
+    }
+  }
+
+  &.project__image--mobile {
+    margin: 0 2vw;
+    @include media-query(max,$bp-small) {
+      margin: 0 2vw 3rem;
+    }
+
+    .project__image-frame {
+      @include media-query(max,$bp-small) {
+        max-width: 160px;
+      }
+    }
+  }
+
+  img {
+    display: block;
+
+    @include media-query(max,1340px) {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.project__image-caption {
+  @include align-self(stretch);
+  @extend %font-size--small;
+
+  &:after {
+    display: block;
+    width: 1px;
+    content: "";
+    background-color: $color--border;
+  }
+
+  .project__image--browser &,
+  .project__image--noframe & {
+    position: relative;
+    padding: 0 0 1.2em 1em;
+    margin: 0 auto 0.5rem;
+    width: 840px;
+    max-width: 85vw;
+
+    &:after {
+      position: absolute;
+      top: 0.25em;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  .project__image--mobile & {
+    margin-bottom: 0.5rem;
+    position: relative;
+    text-align: center;
+    &:after {
+      height: 1rem;
+      margin: 0.25em auto 0;
+    }
+  }
+}
+
+.project__image-frame {
+  display: block;
+  margin: 0 auto;
+  max-width: 1100px;
+  overflow: hidden;
+  background-color: $color-background--frame;
+  box-shadow: 0 6px 16px rgba($color-background--frame, 0.1), 0 4px 6px rgba($color-background--frame, 0.16);
+
+  &.project__image-frame--1280 {
+    max-width: 1280px;
+  }
+
+  .project__image--browser & {
+    border-radius: 0.3rem 0.3rem 0 0;
+  }
+
+  .project__image--mobile & {
+    border-radius: 0.3rem;
+  }
+
+  &:before, &:after {
+    content: "";
+    display: block;
+    background-color: $color-background--frame;
+    background-repeat: no-repeat;
+  }
+
+  &:before {
+    .project__image--browser & {
+      height: 1.6rem;
+      background-image: url(/assets/image-frame-browser.svg);
+      background-position: 0.43rem center;
+      background-size: 2.084rem auto;
+    }
+    .project__image--mobile & {
+      height: 1rem;
+      background-image: url(/assets/image-frame-mobile-top.svg);
+      background-position: center;
+      background-size: 1.83rem auto;
+    }
+  }
+  &:after {
+    .project__image--mobile & {
+      height: 1.6rem;
+      background-image: url(/assets/image-frame-mobile-bottom.svg);
+      background-position: center;
+      background-size: 1.6rem auto;
+    }
+  }
+}
+
+
+
+// -----------------------------------------------------------------
+// Project Navigation
+// -----------------------------------------------------------------
+
+.project-navigation {
+  @extend %main-wrapper;
+  @extend %font-size--x-small;
+}
+
+.project-navigation--top {
+  margin-top: 1.2rem;
+}
+
+// Link
+
+.project-navigation__link {
+  display: block;
+  padding: 1.2rem 0;
+  
+  .other-projects-top--displayed &,
+  .other-projects-bottom--displayed & {
+    box-shadow: inset 0px -1px 0px 0px $color--border;
+  }
+}
+
+// Other Projects Toggle
+
+.project-navigation__link--other {
+
+  .project-navigation--top & {
+    box-shadow: inset 0px -1px 0px 0px $color--border;
+  }
+
+  .project-navigation--bottom & {
+    border-top: 1px solid $color--border;
+  }
+
+  span {
+    vertical-align: middle;
+  }
+
+  &:hover {
+    .dummy-icon {
+      &, &:before, &:after {
+        background-color: $color-font--link-hover;
+      }
+    }
+  }
+
+  .dummy-icon {
+    @include transition(background-color 0.15s ease-in-out);
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    width: 16px;
+    height: 2px;
+    background-color: $color-font--link;
+    margin-right: 0.6em;
+    top: 0.05em;
+    @include media-query(max,$bp-small) {
+      width: 14px;
+    }
+
+    &:before, &:after {
+      @include transition(transform 0.15s ease-in-out);
+      @include transform-origin(50% 50%);
+      position: absolute;
+      content: "";
+      display: block;
+      width: 16px;
+      height: 2px;
+      background-color: $color-font--link;
+      @include media-query(max,$bp-small) {
+        width: 14px;
+      }
+    }
+    &:before {
+      @include transform(translate(0px, -6px));
+      @include media-query(max,$bp-small) {
+        @include transform(translate(0px, -4px));
+      }
+    }
+    &:after {
+      @include transform(translate(0px, 6px));
+      @include media-query(max,$bp-small) {
+        @include transform(translate(0px, 4px));
+      }
+    }
+  }
+
+  &.project-navigation__link--close  {
+    .dummy-icon {
+      background-color: transparent;
+      &:before {
+        @include transform(rotate(-45deg));
+      }
+      &:after {
+        @include transform(rotate(45deg));
+      }
+    }
+  }
+}
+
+// Next Project Link
+
+.project-navigation__link--next {
+  @include cssArrow();
+  position: relative;
+  top: 1px;
+  z-index: 2;
+  padding: 2rem 0 2.15rem;
+
+}
+
+
+.project-navigation__next-project-name {
+  @extend %font-size--h2;
+  font-weight: 700;
+  text-transform: none;
+  display: block;
+  color: $color-font--body;
+  font-family: $font-family-headings;
+  letter-spacing: 0;
+}
+
+
+
+// -----------------------------------------------------------------
+// Projects List on the Projects Pages
+// -----------------------------------------------------------------
+
+.no-js .page-type--project .projects,
+.js .content--project .projects__title {
+  display: none;
+}
+
+.js .content--project .projects {
+  @include transition(max-height 0.5s ease-in-out, opacity 0.5s ease-in-out);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+}
+
+%revealProjectsList {
+  max-height: 60em;
+  opacity: 1;
+  border-top: 0;
+  padding-bottom: 3rem;
+}
+
+
+.js.other-projects-top--displayed  {
+  .project-navigation--top + .projects {
+    @extend %revealProjectsList;
+  }
+}
+
+.js.other-projects-bottom--displayed  {
+  .project-navigation--bottom + .projects {
+    @extend %revealProjectsList;
+  }
+}
