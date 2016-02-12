@@ -452,7 +452,7 @@ body:not(.touch) {
 // External Links
 
 .external-links {
-  @extend %font-size--x-small;
+  @extend %font-size--small;
   margin: 1rem 0 0 0;
   @include media-query(min,$bp-full-width) {
     margin: 3.5rem 0 0 0;
