@@ -363,7 +363,7 @@ $(function() { // When DOM is ready
           // KeyFrame 2: Set scroll position
           if (trigger == 'viaLink' && state.transitionTo == 'project') {
             setTimeout(function() {
-              scrollTo($('.js-content').offset().top, -40, 400);
+              scrollTo($('.js-content').offset().top, 0, 400);
             }, timeScrollUp);
           }
 

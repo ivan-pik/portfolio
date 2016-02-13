@@ -18,11 +18,11 @@
 // Transition opacity
 .content__wrapper {
   @include transition(opacity $fade-in-time ease-in-out, transform $fade-in-time ease-in-out);
-  @include transform(translate(0, -2rem));
+  @include transform(translate(0, 0));
   opacity: 1;
   .fade-out & {
     opacity: 0;
-    @include transform(translate(0, 0));
+    @include transform(translate(0, 2rem));
   }
 }
 
