@@ -68,7 +68,7 @@
 }
 
 .project__long-description {
-  margin-bottom: 5.8em;
+  margin-bottom: 5.4em;
   @include media-query(max,$bp-small) {
      margin-bottom: 3em;
   }
@@ -86,7 +86,7 @@
 }
 
 .project__partial-header {
-  margin-bottom: 3.6rem;
+  margin-bottom: 3.4rem;
   @include media-query(max,$bp-small) {
      margin-bottom: 2em;
   }
@@ -94,11 +94,11 @@
 
 .project__partial-title {
   @extend %font-size--h2;
-  margin-bottom: 0.9em;
+  margin-bottom: 0.8em;
 }
 
 .project__partial-description {
-  margin-bottom: 0.67rem;
+  margin-bottom: 0.4em;
 }
 
 // Image Group Caption

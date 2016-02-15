@@ -253,7 +253,7 @@ body:not(.touch) {
 }
 
 %font-size--h2 {
-  @include fluidSize(18px,40px);
+  @include fluidSize(18px,46px);
   line-height: 1.3;
 }
 
@@ -385,7 +385,7 @@ body {
 
 .projects__item-link {
   display: block;
-  padding: 2rem 33px 2.15rem 0;
+  padding: 2.65rem 33px 2.80rem 0;
   position: relative;
 
   @include media-query(max,$bp-small) {

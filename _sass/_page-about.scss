@@ -12,7 +12,7 @@
 // Section
 
 .about__section {
-  margin: 0 0 6.2rem 0;
+  margin: 0 0 5.6rem 0;
 
   @include media-query(max,$bp-small) {
     margin: 0 0 4rem 0;
@@ -33,8 +33,8 @@
 
 
 .about__section-title {
-  @extend %font-size--h1;
-  margin: 0.15em 0 0.5em;
+  @extend %font-size--h2;
+  margin: 0 0 0.75em;
 }
 
 
@@ -44,14 +44,14 @@
   @include media-query(max,380px) {
     font-size: 12px;
   }
-  margin: 0 0 1.2rem 0;
+  margin: 0 0 0.1rem 0;
 }
 
 .about__disciplines-item {
   display: inline-block;
   border: 1px solid $color-font--body;
-  padding: 0.3rem 0.7rem 0.4rem;
-  margin: 0 0.4rem 1.1rem 0;
+  padding: 0.2rem 0.6rem 0.3rem;
+  margin: 0 0.4rem 1.25rem 0;
   @include media-query(max,$bp-small) {
     padding: 0.2em 0.3em 0.25em;
     margin: 0 0 0.25rem 0;
@@ -60,6 +60,7 @@
 
 .about_discipline-summary {
   @extend %separate;
+  margin: 1.3em 0 0 0;
 
   @include media-query(max,$bp-small) {
     margin: 1rem 0 0 0;
