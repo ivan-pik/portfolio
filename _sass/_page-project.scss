@@ -129,7 +129,7 @@
 .project__image {
 
   &.project__image--browser, &.project__image--noframe {
-    margin: 0 2vw 4rem;
+    margin: 0 2vw 5rem;
     @include media-query(max,$bp-small) {
       margin: 0 2vw 2rem;
     }
@@ -227,6 +227,10 @@
 
 .project-navigation--top {
   margin-top: 1.2rem;
+}
+
+.project-navigation--bottom {
+  padding-top: 4em;
 }
 
 // Link
@@ -327,13 +331,13 @@
   position: relative;
   top: 1px;
   z-index: 2;
-  padding: 2rem 0 2.15rem;
-
+  padding: 0 33px 2.2rem 0;
 }
 
 
 .project-navigation__next-project-name {
   @extend %font-size--h2;
+  margin-top: 0.4em;
   font-weight: 700;
   text-transform: none;
   display: block;
