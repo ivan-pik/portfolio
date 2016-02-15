@@ -166,7 +166,7 @@
     display: block;
     width: 1px;
     content: "";
-    background-color: $color--border;
+    background-color: $color-border--projects-list;
   }
 
   .project__image--browser &,
@@ -179,7 +179,7 @@
 
     &:after {
       position: absolute;
-      top: 0.25em;
+      top: 0.4em;
       bottom: 0;
       left: 0;
     }
@@ -271,7 +271,7 @@
   
   .other-projects-top--displayed &,
   .other-projects-bottom--displayed & {
-    box-shadow: inset 0px -1px 0px 0px $color--border;
+    box-shadow: inset 0px -1px 0px 0px $color-border;
   }
 }
 
@@ -280,11 +280,11 @@
 .project-navigation__link--other {
 
   .project-navigation--top & {
-    box-shadow: inset 0px -1px 0px 0px $color--border;
+    box-shadow: inset 0px -1px 0px 0px $color-border;
   }
 
   .project-navigation--bottom & {
-    border-top: 1px solid $color--border;
+    border-top: 1px solid $color-border;
   }
 
   span {
