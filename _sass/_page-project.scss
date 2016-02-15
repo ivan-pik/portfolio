@@ -202,50 +202,16 @@
   max-width: 1100px;
   overflow: hidden;
   background-color: $color-background--frame;
-  box-shadow: 0 6px 16px rgba($color-background--frame, 0.1), 0 4px 6px rgba($color-background--frame, 0.16);
+  box-shadow: 0 4px 16px rgba($color-background--frame, 0.1), 0 3px 6px rgba($color-background--frame, 0.16);
 
   &.project__image-frame--1280 {
     max-width: 1280px;
   }
 
-  .project__image--browser & {
-    border-radius: 0.3rem 0.3rem 0 0;
-  }
-
   .project__image--mobile & {
     max-width: 320px;
-    border-radius: 0.3rem;
   }
 
-  &:before, &:after {
-    content: "";
-    display: block;
-    background-color: $color-background--frame;
-    background-repeat: no-repeat;
-  }
-
-  &:before {
-    .project__image--browser & {
-      height: 1.6rem;
-      background-image: url(/assets/image-frame-browser.svg);
-      background-position: 0.43rem center;
-      background-size: 2.084rem auto;
-    }
-    .project__image--mobile & {
-      height: 1rem;
-      background-image: url(/assets/image-frame-mobile-top.svg);
-      background-position: center;
-      background-size: 1.83rem auto;
-    }
-  }
-  &:after {
-    .project__image--mobile & {
-      height: 1.6rem;
-      background-image: url(/assets/image-frame-mobile-bottom.svg);
-      background-position: center;
-      background-size: 1.6rem auto;
-    }
-  }
 }
 
 
