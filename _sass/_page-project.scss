@@ -111,15 +111,22 @@
 // Image Group
 
 .project__image-group {
+  padding: 0 1.5vw;
+
   @include media-query(min,$bp-small) {
     @include flexbox;
     @include justify-content(space-between);
-    max-width: 1190px;
+    max-width: 1114px;
     margin: 0 auto 4rem;
+  }
 
-    @include media-query(max,$bp-small) {
-      margin: 0 auto 2rem;
-    }
+  @include media-query(max,$bp-small) {
+    margin: 0 auto 2rem;
+  }
+
+  .project__image.project__image--mobile {
+    margin-left: 0.5vw;
+    margin-right: 0.5vw;
   }
 }
 
